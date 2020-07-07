@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.PersistableBundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -267,7 +269,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void showToast(String message){
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
+        if (item.getItemId() == R.id.info_item){
+            showToast("The current version of the game is" + BuildConfig.VERSION_NAME + ". Check out google play for latest version.");
+        }
+        return true;
+    }
+
+
+
 }
